@@ -1,2 +1,2 @@
-# syllabus_dev
-Repositorio para el desarrollo de syllabusapp
+# syllabus develop
+Repositorio para el desarrollo de SyllabusApp
