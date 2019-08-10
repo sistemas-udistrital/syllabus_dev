@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Syllabus App{% endblock %}
+{% block content %}
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="/add_proyecto">add</a></p>
+    </div>
+    <div class="col-sm-8 text-left">
+      <h1>Syllabus App - {{title}}</h1>
+      <hr>
+      <table class="table table-striped">
+        <thead>
+          {% for i in titles %}
+          <th>{{i}}</th>
+          {% endfor %}
+          <th>acciones</th>
+        </thead>
+         {% for row in rows %}
+            <tr>
+              {% for i in row %}
+               <td>{{i}}</td>
+              {% endfor %}
+              <td>
+                <form method="POST" action="/see_proyecto" style="display: inline">
+                  <input type="hidden" value="{{row[0]}}" name="id">
+                  <button type="button" class="btn btn-default btn-sm" onclick="submit()">
+                    <span class="glyphicon glyphicon-zoom-in"></span> Ver
+                  </button>
+                </form>
+                <form method="POST" action="/edit_proyecto" style="display: inline">
+                  <input type="hidden" value="{{row[0]}}" name="id">
+                  <button type="button" class="btn btn-default btn-sm" onclick="submit()">
+                    <span class="glyphicon glyphicon-wrench"></span> Editar
+                  </button>
+                </form>
+                <form method="POST" action="/delete_proyecto" style="display: inline">
+                  <input type="hidden" value="{{row[0]}}" name="id">
+                  <button type="button" class="btn btn-default btn-sm" onclick="submit()">
+                    <span class="glyphicon glyphicon-trash"></span> Eliminar
+                  </button>
+                </form>
+              </td>
+            </tr>
+         {% endfor %}
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
